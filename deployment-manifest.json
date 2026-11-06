@@ -1,0 +1,37 @@
+{
+  "source": "论文精读馆.html",
+  "target": "index.html",
+  "gitBlobSha": "59fd00c8107135159ff0c444c93862b40a2ebcab",
+  "bytes": 36621171,
+  "identicalToOfflineSnapshot": true,
+  "papers": [
+    {
+      "id": "adaboost",
+      "pages": 9
+    },
+    {
+      "id": "gbdt",
+      "pages": 44
+    },
+    {
+      "id": "xgboost",
+      "pages": 13
+    },
+    {
+      "id": "lightgbm",
+      "pages": 9
+    },
+    {
+      "id": "catboost",
+      "pages": 23
+    },
+    {
+      "id": "dart",
+      "pages": 9
+    },
+    {
+      "id": "shap",
+      "pages": 10
+    }
+  ]
+}
