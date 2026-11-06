@@ -382,6 +382,15 @@ window.PAPER_LIBRARY=[{"id":"adaboost","name":"AdaBoost","year":"1996","venue":"
    const en=group&&$(group.en[0]),zh=group&&$(group.zh[0]);
    if(en&&zh){en.before(original);zh.before(target);}
   }
+  paper.sections.forEach((section,index)=>{
+   if(section.number)return;
+   const key=/摘要/.test(section.label)?'abstract':/参考文献/.test(section.label)?'references':/致谢/.test(section.label)?'acknowledgments':null;
+   if(!key)return;
+   for(const root of [left,right]){
+    const target=[...root.querySelectorAll('[data-align-key],[data-content-align-key]')].find(el=>el.dataset.alignKey===key||el.dataset.contentAlignKey===key);
+    if(target)target.dataset.sectionIndex=String(index);
+   }
+  });
  }
  function alignArticles(){
   const left=sourceMode==='image'?$('source-pages'):$('original-text'),right=$('translation-content');
