@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN" data-base=".." data-routing="hash">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="12 篇机器学习与深度学习经典论文：按主题分层浏览，逐段中英对照，完整原图、数学公式、章节导航与阅读解读。">
+<title>Transformer · 论文精读馆</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231c302c'/%3E%3Ctext x='11' y='29' font-family='Georgia' font-size='29' fill='%23fffefa'%3Ef%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/style.css?v=a29c6a3342e3">
+</head>
+<body data-initial-paper="transformer">
+<a class="skip-link" href="#main-content" style="position:absolute;left:-9999px" onfocus="this.style.left='10px'" onblur="this.style.left='-9999px'">跳至正文</a>
+<div id="home-view" class="home-view">
+ <div class="shell">
+  <header class="site-header">
+   <a class="brand" href="../index.html"><span class="brand-icon">ƒ</span><span>论文精读馆<small>JINYI’S PAPER LIBRARY</small></span></a>
+   <span class="header-note"><i class="dot"></i>原文 · 译文 · 逐段解读</span>
+  </header>
+  <main id="home-main">
+   <section class="hero">
+    <div><div class="eyebrow">MACHINE LEARNING & DEEP LEARNING</div><h1>从经典论文，<br><span>读懂模型如何工作。</span></h1><p>从提升方法到卷积网络、注意力与生成模型。<br class="desktop-break">按主题探索，对照原文与译文，沿着段落、推导和实验读下去。</p></div>
+    <aside class="hero-aside"><div class="stat-row"><b>12<span>篇论文</span></b><b>212<span>页原文</span></b></div><p>全文 · 附录 · 参考文献<br>原图、公式与表格保留原版</p></aside>
+   </section>
+   <nav class="reading-path" aria-label="主题快捷入口"><span class="path-label">探索主题</span><div id="reading-path" style="display:contents"></div></nav>
+   <div class="library-layout">
+    <aside class="collection-sidebar"><div class="collection-nav-label">主题目录 <small>EXPLORE</small></div><nav id="collection-nav" aria-label="论文主题分层目录"></nav></aside>
+    <section class="collection-main" aria-labelledby="shelf-title"><div class="shelf-heading"><div><h2 id="shelf-title">全部论文 <small>THE COLLECTION</small></h2><p id="collection-active" class="collection-active"></p></div><div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="home-search" type="search" placeholder="搜索主题、论文或双语正文…" aria-label="搜索论文与内容"><button class="search-clear hidden" id="clear-home-search" aria-label="清空搜索">×</button></div></div><div id="paper-grid" class="paper-grid"></div><div id="home-results" hidden aria-live="polite"></div></section>
+   </div>
+  </main>
+  <footer class="home-footer"><span lang="en">© 2026 Jinyi. All rights reserved.</span></footer>
+ </div>
+</div>
+<div id="reader-view" hidden>
+ <header id="reader-header" class="reader-header">
+  <div class="reader-head-left"><a id="reader-home-brand" class="brand" href="../index.html"><span class="brand-icon">ƒ</span><span class="brand-name">论文精读馆</span></a><a id="back-home" class="back-home" href="../index.html">← <span>返回书架</span></a></div>
+  <div class="reader-header-controls"><div class="segments" role="group" aria-label="阅读模式"><button id="mode-parallel" data-mode="parallel" class="active" aria-pressed="true">双语对照</button><button id="mode-focus" data-mode="focus" aria-pressed="false">中文阅读</button><button id="mode-pdf" data-mode="pdf" aria-pressed="false">原版 PDF</button></div></div>
+  <div class="reader-head-right"><div class="reading-settings"><label><input type="checkbox" id="show-notes" checked>显示解读</label><button id="font-down" aria-label="缩小译文字体">A−</button><button id="font-up" aria-label="放大译文字体">A+</button></div><a id="open-pdf-top" class="pdf-link" href="#" target="_blank" rel="noopener">打开原始 PDF ↗</a></div>
+ </header>
+ <div class="reader-layout">
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+  <aside id="sidebar" class="sidebar" aria-label="论文目录">
+   <div class="side-eyebrow">READING ROOM</div><div class="side-title" id="side-title"></div><p class="side-subtitle" id="side-subtitle"></p>
+   <div class="search-box side-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="paper-search" type="search" placeholder="搜索本篇原文 / 译文" aria-label="搜索本篇论文"></div>
+   <div class="toc-heading"><span id="toc-heading">章节目录</span><span id="toc-count"></span></div>
+   <nav id="toc-list" class="toc-list" aria-label="章节导航"></nav><div id="paper-search-results" class="inpaper-results" hidden aria-live="polite"></div>
+
+  </aside>
+  <main id="main-content" class="paper-main">
+   <div class="paper-topline"><div class="eyebrow" id="paper-eyebrow"></div><button id="mobile-toc" class="mobile-menu-button" aria-controls="sidebar" aria-expanded="false">☰ 章节目录</button></div>
+   <h1 class="paper-heading" id="paper-title"></h1><p id="paper-byline" class="paper-byline"></p>
+   <div id="page-context" class="page-context"></div>
+   <div id="keyword-bar" class="keyword-bar" aria-label="中英关键词联动定位"></div>
+   <div class="reading-columns" id="reading-columns">
+    <section class="original-column" aria-label="英文原文">
+     <div class="column-heading"><div>英文原文<span class="overline">ORIGINAL</span></div><div class="original-actions"><button id="source-image-mode" aria-pressed="false">原版页</button><button id="source-text-mode" class="active" aria-pressed="true">文本</button><button id="zoom-source">放大 ↗</button></div></div>
+     <div class="source-viewport" id="source-viewport"><div id="source-pages" class="source-pages" hidden></div><article id="original-text" class="original-text"></article></div>
+     <p class="source-foot"><span id="source-foot-label">图、表、公式与原页排版完整保留</span><button id="copy-original">复制英文全文</button></p>
+    </section>
+    <section class="translation-column" aria-label="中文译文与解读">
+     <div class="column-heading translation-label"><div>中文译文<span class="overline">TRANSLATION</span></div><span id="translation-page-label" style="font-size:10px;color:var(--muted)"></span></div>
+     <article class="translation-content" id="translation-content"></article>
+
+    </section>
+   </div>
+   <section id="pdf-panel" class="pdf-panel" hidden><div class="pdf-fallback"><span>原始 PDF · 可直接核对图表、公式与完整排版</span><a id="pdf-fallback-link" href="#" target="_blank" rel="noopener">在新窗口打开 ↗</a></div><iframe id="pdf-frame" title="论文原始 PDF"></iframe></section>
+
+  </main>
+ </div>
+</div>
+<dialog class="modal" id="image-dialog" aria-label="放大论文原版页面"><div class="modal-toolbar"><span id="zoom-title"></span><div class="zoom-controls"><button id="zoom-out" aria-label="缩小原版页">−</button><output id="zoom-level">100%</output><button id="zoom-in" aria-label="放大原版页">+</button><button id="zoom-fit">适合宽度</button><button id="close-dialog" aria-label="关闭放大页面">关闭 ×</button></div></div><div class="modal-canvas" id="modal-canvas"><img id="zoom-image" alt="放大的论文原版页面"></div></dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../data.js?v=defa2f65d334"></script>
+<script src="../app.js?v=8a90c788923b"></script>
+</body>
+</html>

@@ -1,9 +1,7 @@
-# 论文精读馆
-
-原文、中文译文与解读对照阅读。网站首页直接使用离线版 HTML，图片、原始 PDF、公式字体和阅读交互全部保留。
+# Jinyi’s Paper Library
 
 [打开论文精读馆](https://ginyee-w.github.io/paper-reading-library/)
 
-## 发布与更新
+机器学习与深度学习论文的原文、中文译文和逐段解读。
 
-GitHub Pages 从 `main` 分支根目录发布。更新时，将最新版离线 HTML 原样复制为 `index.html` 后提交；保持 `.nojekyll`。
+线上版本采用外部静态资源，原始 PDF 按字节保留。由 main 分支根目录发布；本次起只维护线上版本，历史离线 HTML 保留原状。
